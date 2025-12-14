@@ -153,7 +153,7 @@ A página de protocolo contém as seguintes seções:
 - **Nome do envelope**: Nome do arquivo sem extensão
 - **Autor**: Nome do primeiro assinante ou "Sistema Local"
 - **Status**: "Finalizado" se há assinaturas, "Pendente" caso contrário
-- **HASH TOTVS**: Hash formatado estilo TOTVS (XX-XX-XX-...)
+- **HASH SICFAR**: Hash formatado estilo SICFAR (XX-XX-XX-...)
 - **SHA256**: Hash completo
 
 ### 3. Seção de Assinaturas
@@ -167,14 +167,14 @@ Para cada assinatura:
 
 ### 4. Seção de Autenticidade
 - Texto explicativo
-- Box com HASH TOTVS para verificação
+- Box com HASH SICFAR para verificação
 - Rodapé com informações do documento
 
 ---
 
-## Formato do Hash TOTVS
+## Formato do Hash SICFAR
 
-O hash é formatado no estilo TOTVS para facilitar leitura e verificação:
+O hash é formatado no estilo SICFAR para facilitar leitura e verificação:
 
 ```typescript
 function formatHashTotvs(hash: string): string {
@@ -346,7 +346,7 @@ async function createProtocolPage(
   const status = signatureLog.signatures.length > 0 ? 'Finalizado' : 'Pendente';
   drawText(`Status: ${status}`, { indent: 10 });
 
-  drawText(`HASH TOTVS: ${totvsHash}`, { 
+  drawText(`HASH SICFAR: ${totvsHash}`, { 
     indent: 10, 
     size: PROTOCOL_CONFIG.SMALL_FONT_SIZE 
   });
@@ -451,7 +451,7 @@ async function createProtocolPage(
     color: rgb(0.97, 0.97, 0.97),
   });
 
-  protocolPage.drawText(`HASH TOTVS: ${totvsHash}`, {
+  protocolPage.drawText(`HASH SICFAR: ${totvsHash}`, {
     x: margin + 20,
     y: boxY + 10,
     size: PROTOCOL_CONFIG.SMALL_FONT_SIZE,

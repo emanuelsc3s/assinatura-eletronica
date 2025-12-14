@@ -145,20 +145,20 @@ O hash de assinatura é gerado a partir da concatenação de:
 
 ---
 
-## Formato do Hash TOTVS
+## Formato do Hash SICFAR
 
-Para facilitar visualização e verificação, o hash é formatado no estilo TOTVS:
+Para facilitar visualização e verificação, o hash é formatado no estilo SICFAR:
 
 ```typescript
 /**
- * Formata hash como TOTVS (XX-XX-XX-...)
+ * Formata hash como SICFAR (XX-XX-XX-...)
  */
 function formatHashTotvs(hash: string): string {
   return hash.toUpperCase().match(/.{1,2}/g)?.join('-') || hash;
 }
 
 /**
- * Gera hash TOTVS (primeiros 20 bytes)
+ * Gera hash SICFAR (primeiros 20 bytes)
  */
 function generateTotvsHash(hash: string): string {
   const bytes = hash.substring(0, 40); // 20 bytes = 40 hex chars
@@ -215,7 +215,7 @@ graph TD
     C --> D
     D --> E[SHA-256]
     E --> F[Hash Hexadecimal]
-    F --> G[Hash TOTVS]
+    F --> G[Hash SICFAR]
     F --> H[Hash Abreviado]
 ```
 

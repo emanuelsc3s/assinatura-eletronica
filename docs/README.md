@@ -29,7 +29,7 @@ Este é um **MVP (Minimum Viable Product)** de uma aplicação **100% frontend**
 | **100% Frontend** | Não requer backend/servidor |
 | **Device ID** | Identificador único do dispositivo (substitui IP em produção) |
 | **Hash SHA-256** | Criptografia para integridade da assinatura |
-| **Protocolo TOTVS** | Formato de hash estilo TOTVS (XX-XX-XX-...) |
+| **Protocolo SICFAR** | Formato de hash estilo SICFAR (XX-XX-XX-...) |
 | **LocalStorage** | Persistência do log de assinaturas |
 | **Validação CPF** | Validação completa de CPF brasileiro |
 

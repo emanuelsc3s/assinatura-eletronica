@@ -244,7 +244,7 @@ export async function finalizePDFWithProtocol(
   y -= 18;
   page.drawText(`Nome: ${log.pdfMetadata.fileName}`, { x: 60, y, size: 9, font });
   y -= 14;
-  page.drawText(`HASH TOTVS: ${totvsHash}`, { x: 60, y, size: 8, font });
+  page.drawText(`HASH SICFAR: ${totvsHash}`, { x: 60, y, size: 8, font });
   y -= 14;
   page.drawText(`SHA256: ${docHash}`, { x: 60, y, size: 8, font });
   y -= 25;

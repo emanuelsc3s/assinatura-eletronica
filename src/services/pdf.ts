@@ -52,7 +52,7 @@ export async function validatePDF(pdfBytes: Uint8Array): Promise<boolean> {
 }
 
 /**
- * Formats a hash as TOTVS style (XX-XX-XX-...)
+ * Formats a hash as SICFAR style (XX-XX-XX-...)
  * @param hash - Original hash string
  * @returns Formatted hash with dashes
  */
@@ -61,9 +61,9 @@ function formatHashTotvs(hash: string): string {
 }
 
 /**
- * Generates a TOTVS-style hash from an existing hash
+ * Generates a SICFAR-style hash from an existing hash
  * @param hash - SHA256 hash
- * @returns Formatted TOTVS hash (first 20 bytes)
+ * @returns Formatted SICFAR hash (first 20 bytes)
  */
 function generateTotvsHash(hash: string): string {
   const bytes = hash.substring(0, 40); // First 20 bytes (40 hex chars)
@@ -254,8 +254,8 @@ async function createProtocolPage(
   const status = signatureLog.signatures.length > 0 ? 'Finalizado' : 'Pendente';
   drawText(`Status: ${status}`, { indent: 10 });
 
-  // HASH TOTVS
-  drawText(`HASH TOTVS: ${totvsHash}`, { indent: 10, size: PROTOCOL_CONFIG.SMALL_FONT_SIZE });
+  // HASH SICFAR
+  drawText(`HASH SICFAR: ${totvsHash}`, { indent: 10, size: PROTOCOL_CONFIG.SMALL_FONT_SIZE });
 
   // SHA256
   drawText(`SHA256: ${documentHash}`, { indent: 10, size: PROTOCOL_CONFIG.SMALL_FONT_SIZE });
@@ -335,7 +335,7 @@ async function createProtocolPage(
     color: rgb(0.97, 0.97, 0.97),
   });
 
-  protocolPage.drawText(`HASH TOTVS: ${totvsHash}`, {
+  protocolPage.drawText(`HASH SICFAR: ${totvsHash}`, {
     x: margin + 20,
     y: boxY + 10,
     size: PROTOCOL_CONFIG.SMALL_FONT_SIZE,

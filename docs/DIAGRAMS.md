@@ -208,7 +208,7 @@ Este documento apresenta diagramas visuais do fluxo de assinatura.
 │  │  Nome do envelope: contrato                                     │  │
 │  │  Autor: JOÃO DA SILVA                                           │  │
 │  │  Status: Finalizado                                             │  │
-│  │  HASH TOTVS: A5-91-A6-D4-0B-F4-20-40-...                       │  │
+│  │  HASH SICFAR: A5-91-A6-D4-0B-F4-20-40-...                       │  │
 │  │  SHA256: a591a6d40bf420404a011733...                            │  │
 │  │                                                                 │  │
 │  │  ASSINATURAS                                                    │  │
@@ -222,7 +222,7 @@ Este documento apresenta diagramas visuais do fluxo de assinatura.
 │  │  AUTENTICIDADE                                                  │  │
 │  │  ─────────────                                                  │  │
 │  │  ┌────────────────────────────────────────────────────────┐    │  │
-│  │  │  HASH TOTVS: A5-91-A6-D4-0B-F4-20-40-...               │    │  │
+│  │  │  HASH SICFAR: A5-91-A6-D4-0B-F4-20-40-...               │    │  │
 │  │  └────────────────────────────────────────────────────────┘    │  │
 │  │                                                                 │  │
 │  │  Este documento foi assinado eletronicamente.                   │  │
