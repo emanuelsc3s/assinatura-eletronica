@@ -71,6 +71,54 @@ function generateTotvsHash(hash: string): string {
 }
 
 /**
+ * Detects the page size of the original PDF document
+ * Uses the most common page size, or falls back to the first page if all are different
+ * @param pdfDoc - PDF document
+ * @returns [width, height] tuple representing the detected page size
+ */
+function detectOriginalPageSize(pdfDoc: PDFDocument): [number, number] {
+  const pages = pdfDoc.getPages();
+
+  // Edge case: No pages in document, fall back to A4
+  if (pages.length === 0) {
+    return PageSizes.A4;
+  }
+
+  // Edge case: Only one page, use its size
+  if (pages.length === 1) {
+    const { width, height } = pages[0].getSize();
+    return [width, height];
+  }
+
+  // Count frequency of each unique page size
+  const sizeFrequency = new Map<string, { size: [number, number]; count: number }>();
+
+  for (const page of pages) {
+    const { width, height } = page.getSize();
+    const sizeKey = `${width}x${height}`;
+
+    if (sizeFrequency.has(sizeKey)) {
+      sizeFrequency.get(sizeKey)!.count++;
+    } else {
+      sizeFrequency.set(sizeKey, { size: [width, height], count: 1 });
+    }
+  }
+
+  // Find the most common page size
+  let mostCommonSize: [number, number] = [0, 0];
+  let maxCount = 0;
+
+  for (const { size, count } of sizeFrequency.values()) {
+    if (count > maxCount) {
+      maxCount = count;
+      mostCommonSize = size;
+    }
+  }
+
+  return mostCommonSize;
+}
+
+/**
  * Draws the hash header on all pages
  * @param pdfDoc - PDF document
  * @param documentHash - Hash to display
@@ -138,7 +186,7 @@ async function createProtocolPage(
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   
   // Create new page at the beginning
-  const [pageWidth, pageHeight] = PageSizes.A4;
+  const [pageWidth, pageHeight] = detectOriginalPageSize(pdfDoc);
   const protocolPage = pdfDoc.insertPage(0, [pageWidth, pageHeight]);
   
   const margin = PROTOCOL_CONFIG.MARGIN;
